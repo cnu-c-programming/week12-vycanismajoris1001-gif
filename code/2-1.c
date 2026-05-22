@@ -2,7 +2,7 @@
 #include <string.h>
 
 int main(int argc, const char* argv[], const char* envp[]) {
-    FILE* fp = fopen("student.txt", "r");
+    FILE* fp = fopen("student.txt", "a");
 
     while (1) {
         char name[10] = {0};
