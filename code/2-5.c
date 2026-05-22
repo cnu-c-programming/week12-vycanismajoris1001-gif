@@ -13,7 +13,7 @@ int main(int argc, const char* argv[]) {
     }
 
 
-    fclose(fp_scr);
+    fclose(fp_src);
     fclose(fp_dst);
 
 
