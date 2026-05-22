@@ -27,6 +27,7 @@ void config_parser(Config* config_ptr) {
 
     fclose(fp);
 }
+}
 
 int main(int argc, const char* argv[]) {
     Config config;
