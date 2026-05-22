@@ -7,8 +7,8 @@ int main(int argc, const char* argv[]) {
     FILE* fp_src = fopen(argv[1], "r");
     FILE* fp_dst = fopen(argv[2], "r");
 
-    while ((fp = fgetc(src)) != EOF) {
-        fputc(fp, dst);
+    while ((fp_src = fgetc(fp_dst)) != EOF) {
+        fputc(fp_src, fp_dst);
     }
 
 
