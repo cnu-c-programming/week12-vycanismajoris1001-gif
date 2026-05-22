@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 int main(int argc, const char* argv[], const char* envp[]) {
-  int i;
+  int* j = &argc;
 
-  while (envp[i]<argc) {
+  while (envp[i]<j) {
     printf("%s\n", envp[i]);
     i++;
   }
