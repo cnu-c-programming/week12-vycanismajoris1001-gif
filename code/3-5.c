@@ -10,6 +10,21 @@ int main(int argc, const char* argv[]) {
 
 
     int sum = 0;
+    int num;
+
+    while (!feof(fp)) {
+        int result = fscanf(fp, "%d", &num);
+
+        if (result == 1) {
+            sum += num;
+        } 
+        else if (result == 0) {
+            fgetc(fp);
+        } 
+        else {
+            break;
+        }
+    }
 
 
     printf("sum: %d\n", sum);
