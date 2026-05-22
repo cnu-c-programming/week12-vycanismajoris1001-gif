@@ -11,7 +11,9 @@ int main(int argc, const char* argv[]) {
 
     int sum = 0;
     int num;
-    char invalid_str[256];
+    
+    char invalid_inputs[100][256];
+    int invalid_count = 0;
 
     while (!feof(fp)) {
         int result = fscanf(fp, "%d", &num);
@@ -20,8 +22,13 @@ int main(int argc, const char* argv[]) {
             sum += num;
         } 
         else if (result == 0) {
-            if (fscanf(fp, "%255s", invalid_str) == 1) {
-                printf("invalid input %s\n", invalid_str);
+            if (invalid_count < 100) {
+                if (fscanf(fp, "%255s", invalid_inputs[invalid_count]) == 1) {
+                    invalid_count++;
+                }
+            } else {
+                char dummy[256];
+                fscanf(fp, "%255s", dummy);
             }
         } 
         else {
@@ -30,6 +37,9 @@ int main(int argc, const char* argv[]) {
     }
 
     printf("sum: %d\n", sum);
-    fclose(fp);
+
+    for (int i = 0; i < invalid_count; i++) {
+        printf("invalid input %s\n", invalid_inputs[i]);
+    }
     return 0;
 }
