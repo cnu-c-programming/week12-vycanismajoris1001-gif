@@ -11,6 +11,7 @@ int main(int argc, const char* argv[]) {
 
     int sum = 0;
     int num;
+    char invalid_str[256];
 
     while (!feof(fp)) {
         int result = fscanf(fp, "%d", &num);
@@ -19,13 +20,14 @@ int main(int argc, const char* argv[]) {
             sum += num;
         } 
         else if (result == 0) {
-            fgetc(fp);
+            if (fscanf(fp, "%255s", invalid_str) == 1) {
+                printf("invalid input %s\n", invalid_str);
+            }
         } 
         else {
             break;
         }
     }
-
 
     printf("sum: %d\n", sum);
     fclose(fp);
