@@ -12,34 +12,18 @@ typedef struct config {
 void config_parser(Config* config_ptr) {
     FILE* fp = fopen("config.txt", "r");
     if (fp == NULL) {
-        printf("Error: config.txt 파일을 열 수 없습니다.\n");
-        return;
+        return; 
     }
-
-    char key[64];
-    char dummy[4];
 
     while (!feof(fp)) {
-        if (fscanf(fp, "%63s %3s", key, dummy) == 2) {
-
-            if (strcmp(key, "InputFileName") == 0) {
-                fscanf(fp, "%63s", config_ptr->InputFileName);
-            } 
-            else if (strcmp(key, "Options") == 0) {
-                fscanf(fp, "%d", &config_ptr->Options);
-            } 
-            else if (strcmp(key, "SectionName") == 0) {
-                fscanf(fp, "%63s", config_ptr->SectionName);
-            } 
-            else if (strcmp(key, "Address") == 0) {
-                fscanf(fp, "%lli", &config_ptr->Address);
-            }
-            else {
-                char skip[128];
-                fscanf(fp, "%127s", skip);
-            }
+        if (fscanf(fp, "%63s %d %63s %llu", 
+                   config_ptr->InputFileName, 
+                   &config_ptr->Options, 
+                   config_ptr->SectionName, 
+                   &config_ptr->Address) == 4) {
+ .
+            break; 
         }
-    }
 
     fclose(fp);
 }
