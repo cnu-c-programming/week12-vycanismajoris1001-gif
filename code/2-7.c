@@ -21,12 +21,11 @@ void config_parser(Config* config_ptr) {
                    &config_ptr->Options, 
                    config_ptr->SectionName, 
                    &config_ptr->Address) == 4) {
- .
             break; 
         }
+    }
 
     fclose(fp);
-}
 }
 
 int main(int argc, const char* argv[]) {
