@@ -2,9 +2,9 @@
 
 int main(int argc, const char* argv[], const char* envp[]) {
   int i = 0;
-  int* j = &argc;
 
-  while (i<j) {
+
+  while (i<argc) {
     printf("%s\n", envp[i]);
     i++;
   }
