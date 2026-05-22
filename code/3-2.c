@@ -13,6 +13,7 @@ int main(int argc, const char* argv[]) {
         return 0;
 
     fscanf(fp, "%s", buffer);
+    fgets(buffer, sizeof(buffer), fp);
     fclose(fp);
 
     printf("%s\n", buffer);
